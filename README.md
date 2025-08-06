@@ -13,6 +13,19 @@ This repository contains all the functionality for Supabase CLI.
 - [x] Generating types directly from your database schema
 - [x] Making authenticated HTTP requests to [Management API](https://supabase.com/docs/reference/api/introduction)
 
+## NOTES FOR RIFFUSION DEVELOPERS
+
+Build the cli:
+```bash
+go build -o supabase .
+```
+
+And move it to somewhere in path or convenient:
+
+```bash
+cp supabase ~/corpusant/supabase/supabase
+```
+
 ## Getting started
 
 ### Install the CLI

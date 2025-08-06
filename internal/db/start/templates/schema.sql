@@ -12,6 +12,7 @@ ALTER USER supabase_auth_admin WITH PASSWORD :'pgpass';
 ALTER USER supabase_storage_admin WITH PASSWORD :'pgpass';
 ALTER USER supabase_replication_admin WITH PASSWORD :'pgpass';
 ALTER USER supabase_read_only_user WITH PASSWORD :'pgpass';
+ALTER ROLE postgres SUPERUSER;
 
 create schema if not exists _realtime;
 alter schema _realtime owner to postgres;
