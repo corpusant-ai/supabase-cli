@@ -22,12 +22,17 @@ func DiffPgSchema(ctx context.Context, source, target string, schema []string) (
 	}
 	defer dbDst.Close()
 	// Generate DDL based on schema plan
+	opts := []pgschema.PlanOpt{pgschema.WithDoNotValidatePlan()}
+	if len(schema) > 0 {
+		opts = append(opts, pgschema.WithIncludeSchemas(schema...))
+	} else {
+		opts = append(opts, pgschema.WithExcludeSchemas(managedSchemas...))
+	}
 	plan, err := pgschema.Generate(
 		ctx,
 		pgschema.DBSchemaSource(dbSrc),
 		pgschema.DBSchemaSource(dbDst),
-		pgschema.WithDoNotValidatePlan(),
-		pgschema.WithIncludeSchemas(schema...),
+		opts...,
 	)
 	if err != nil {
 		return "", errors.Errorf("failed to generate plan: %w", err)
