@@ -13,18 +13,31 @@ This repository contains all the functionality for Supabase CLI.
 - [x] Generating types directly from your database schema
 - [x] Making authenticated HTTP requests to [Management API](https://supabase.com/docs/reference/api/introduction)
 
-## NOTES FOR RIFFUSION DEVELOPERS
+## Making a release
 
-Build the cli:
-```bash
-go build -o supabase .
-```
+1. Install [goreleaser](https://goreleaser.com/install/)
+1. Tag / commit any changes
 
-And move it to somewhere in path or convenient:
+    ```bash
+    git commit -am 'Things changed'
+    git tag v2.99.91
+    git push --tags
+    ```
+1. Release
 
-```bash
-cp supabase ~/corpusant/supabase/supabase
-```
+    To build the cli locally (without pushing to github):
+
+    ```bash
+    goreleaser build --snapshot --clean
+    ```
+
+    To build the cli and push to github:
+
+    ```bash
+    GITHUB_TOKEN="ghp_<personal_access_token>" goreleaser release --clean
+    ```
+
+1. Update the urls of the supabase cli tool in the corpusant repo
 
 ## Getting started
 

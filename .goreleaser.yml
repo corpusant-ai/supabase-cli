@@ -19,9 +19,12 @@ builds:
 archives:
   - name_template: '{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}{{ with .Arm }}v{{ . }}{{ end }}{{ with .Mips }}_{{ . }}{{ end }}{{ if not (eq .Amd64 "v1") }}{{ .Amd64 }}{{ end }}'
 release:
-  draft: true
+  draft: false
   replace_existing_draft: true
   prerelease: auto
+  github:
+    owner: corpusant-ai
+    name: supabase-cli
 changelog:
   use: github
   groups:
